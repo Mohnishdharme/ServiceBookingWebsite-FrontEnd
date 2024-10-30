@@ -1,0 +1,17 @@
+<!-- Ad Container -->
+<div class="ad-container">
+  <div class="ad-card" *ngFor="let ad of ads">
+      <img [src]="ad.img" alt="{{ ad.img }}" class="ad-image"/>
+      <div class="ad-details">
+          <h3>{{ ad.serviceName }}</h3>
+          <p><strong>Company:</strong> {{ ad.companyName }}</p>
+          <p><strong>Description:</strong> {{ ad.description }}</p>
+          <p><strong>Price:</strong> ₹{{ ad.price }}</p>
+      </div>
+      <div class="button-container"> <!-- New container for buttons -->
+          <button nz-button routerLink="/company/ad/{{ad.id}}">Update</button>
+          <button nz-button (click)="confirmDelete(ad.id)">Delete</button>
+
+      </div>
+  </div>
+</div>

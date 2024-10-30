@@ -1,0 +1,33 @@
+<table>
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Reservation Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.user_name }}</td>
+        <td>{{ booking.serviceName }}</td>
+        <td>{{ booking.bookDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ booking.reservationStatus }}</td>
+        <td>
+          <!-- Display Approve and Reject buttons if the status is PENDING -->
+          <ng-container *ngIf="booking.reservationStatus === 'PENDING'; else statusLabel">
+            <div class="button-container"> <!-- New container for buttons -->
+              <button (click)="approveBooking(booking.id)">Approve</button>
+              <button (click)="rejectBooking(booking.id)">Reject</button>
+            </div>
+          </ng-container>
+          <!-- Show reservation status if it's not pending -->
+          <ng-template #statusLabel>
+            <span>{{ booking.reservationStatus }}</span>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

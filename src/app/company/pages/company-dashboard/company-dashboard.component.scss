@@ -1,0 +1,58 @@
+// Table Styling
+table {
+    width: 100%; // Full width
+    border-collapse: collapse; // Collapse borders for cleaner look
+    margin-top: 20px; // Margin above table
+  
+    thead {
+      background-color: #8a2be2; // Header background color
+      color: white; // Header text color
+      th {
+        padding: 12px; // Padding for header cells
+        text-align: left; // Left-align text
+        font-weight: bold; // Bold text
+        border-bottom: 2px solid #ddd; // Bottom border
+      }
+    }
+  
+    tbody {
+      tr {
+        transition: background-color 0.3s ease; // Smooth transition for hover
+        &:hover {
+          background-color: #f1f1f1; // Light grey on hover
+        }
+  
+        td {
+          padding: 10px; // Padding for data cells
+          border-bottom: 1px solid #ddd; // Bottom border for rows
+          color: #333; // Text color
+  
+          // Button container for action buttons
+          .button-container {
+            display: flex; // Use flex for button layout
+            gap: 10px; // Space between buttons
+  
+            button {
+              padding: 8px 12px; // Padding for buttons
+              background-color: #00796b; // Button background color
+              color: white; // Button text color
+              border: none; // No border
+              border-radius: 4px; // Rounded corners
+              cursor: pointer; // Pointer cursor
+              transition: background-color 0.3s ease; // Transition for hover effect
+  
+              &:hover {
+                background-color: #004d40; // Darker shade on hover
+              }
+  
+              &:disabled {
+                background-color: #ccc; // Color for disabled buttons
+                cursor: not-allowed; // Not allowed cursor
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  

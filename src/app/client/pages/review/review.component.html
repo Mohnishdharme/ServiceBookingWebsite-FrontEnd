@@ -1,0 +1,39 @@
+<div class="review-container">
+    <h2>Leave a Review</h2>
+    
+    <!-- Form for review submission -->
+    <form [formGroup]="validateForm" (ngSubmit)="giveReview()" class="review-form">
+      
+      <!-- Rating input field -->
+      <label for="rating">Rating:</label>
+      <input
+        type="number"
+        id="rating"
+        formControlName="rating"
+        placeholder="Rate between 1 and 5"
+        min="1"
+        max="5"
+        required
+      />
+      <div *ngIf="validateForm.get('rating')?.invalid && validateForm.get('rating')?.touched" class="error-message">
+        Rating is required
+      </div>
+      
+      <!-- Review text input field -->
+      <label for="review">Review:</label>
+      <textarea
+        id="review"
+        formControlName="review"
+        placeholder="Write your review here"
+        rows="4"
+        required
+      ></textarea>
+      <div *ngIf="validateForm.get('review')?.invalid && validateForm.get('review')?.touched" class="error-message">
+        Review is required
+      </div>
+      
+      <!-- Submit button -->
+      <button type="submit" [disabled]="validateForm.invalid">Submit Review</button>
+    </form>
+  </div>
+  

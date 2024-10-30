@@ -1,0 +1,39 @@
+<table>
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Reservation Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of Bookings">
+        <td>{{ booking.user_name}}</td>
+        <td>{{ booking.serviceName }}</td>
+        <td>{{ booking.bookDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ booking.reservationStatus }}</td>
+        <td>
+          <!-- Display Approve and Reject buttons if the status is PENDING -->
+          <ng-container *ngIf="booking.reviewStatus === 'FALSE'">
+            <!-- Show "Review" button if reservationStatus is approved -->
+            <button *ngIf="booking.reservationStatus === 'APPROVED'" routerLink="/client/review/{{ booking.id }}">Review</button>
+          
+            <!-- Show "Waiting for Approval" if reservationStatus is pending -->
+            <span *ngIf="booking.reservationStatus === 'PENDING'">Waiting for Approval</span>
+          
+            <!-- Show "No Action" if reservationStatus is rejected -->
+            <span *ngIf="booking.reservationStatus === 'REJECTED'">No Action</span>
+          </ng-container>
+          
+          <ng-container *ngIf="booking.reviewStatus === 'TRUE' && booking.reservationStatus === 'APPROVED'">
+            <!-- Show "Posted" if reviewStatus is true and reservationStatus is approved -->
+            <span>Posted</span>
+          </ng-container>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

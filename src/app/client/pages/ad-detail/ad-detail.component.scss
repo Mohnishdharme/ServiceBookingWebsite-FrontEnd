@@ -1,0 +1,120 @@
+.ad-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    .ad-detail-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  
+      @media (min-width: 768px) {
+        flex-direction: row;
+        text-align: left;
+      }
+  
+      .image {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+  
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          object-fit: cover;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+  
+      .ad-info {
+        padding: 10px 20px;
+        h2 {
+          color: #333;
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+        }
+        h5 {
+          color: #666;
+          font-size: 1rem;
+          margin: 5px 0;
+          b {
+            color: #333;
+          }
+        }
+      }
+    }
+  
+    .book-service {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e0f7fa;
+      border-radius: 8px;
+  
+      h2 {
+        font-size: 1.4rem;
+        color: #00796b;
+        margin-bottom: 15px;
+      }
+  
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  
+        @media (min-width: 768px) {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+  
+        .nz-date-picker,
+        button {
+          width: 100%;
+          max-width: 180px;
+          margin: 10px 0;
+  
+          @media (min-width: 768px) {
+            width: auto;
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  
+    .review-section {
+      margin-top: 30px;
+  
+      h2 {
+        font-size: 1.4rem;
+        color: #333;
+      }
+  
+      .review-card {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin: 10px 0;
+  
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+        }
+  
+        strong {
+          color: #333;
+        }
+  
+        hr {
+          margin: 10px 0;
+          border: 0;
+          border-top: 1px solid #e0e0e0;
+        }
+      }
+    }
+  }
+  

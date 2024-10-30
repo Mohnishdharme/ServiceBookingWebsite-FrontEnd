@@ -1,0 +1,26 @@
+<form nz-form [formGroup]="validateform" (ngSubmit)="SearchAdByName()" style="width: 20%;">
+    <input nz-input formControlName="service" placeholder="Search Service" />
+    <button nz-button [disabled]="validateform.invalid">Search</button>
+  </form>
+  
+
+<div class="ad-container">
+    <div class="ad-card" *ngFor="let ad of ads">
+      <img [src]="ad.img" alt="{{ ad.img }}" class="ad-image"/>
+      <div class="ad-details">
+        <h3>{{ ad.serviceName }}</h3>
+        <p><strong>price:</strong> {{ ad.companyName }}</p>
+        <p><strong>Description:</strong> {{ ad.description }}</p>
+        <p><strong>Price:</strong> ₹{{ ad.price }}</p>
+      </div>
+      <div>
+        <button nz-button routerLink="/client/ad/{{ad.id}}">view</button>
+  
+      </div>
+    </div>
+  </div>
+  
+  <!-- Template for when no ads are available -->
+  <ng-template #noAdsTemplate>
+    <p>No ads available at the moment.</p>
+  </ng-template>

@@ -1,0 +1,47 @@
+<div *ngIf="adId && adData" class="ad-container">
+    <div class="ad-detail-container">
+      <div class="image">
+        <img [src]="adData?.img" alt="ad image" />
+      </div>
+      <div class="ad-info">
+        <h2>{{ adData?.serviceName }}</h2>
+        <h5>Price: <b>{{ adData?.price }}</b></h5>
+        <h5>Company Name: <b>{{ adData?.companyName }}</b></h5>
+        <h5>Description: <b>{{ adData?.description }}</b></h5>
+      </div>
+    </div>
+  
+    <div class="book-service">
+      <h2>Book Service</h2>
+      <form nz-form [formGroup]="validateform">
+        <div nz-row nzGutter="16">
+          <div nz-col nzSpan="12">
+            <div nz-form-control>
+              <label nz-form-label nzFor="bookDate">Date of Booking</label>
+              <nz-date-picker formControlName="bookDate" name="bookDate" id="bookDate"></nz-date-picker>
+            </div>
+          </div>
+          <div nz-col nzSpan="12">
+            <button nz-button nzType="primary" [disabled]="validateform.invalid" (click)="bookService()">Book</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Review Section -->
+    <div class="review-section">
+      <h2>Reviews</h2>
+      <div *ngIf="review && review.length > 0; else noReviews">
+        <div *ngFor="let rev of review" class="review-card">
+          <p><strong>{{ rev.clientName }}</strong> - {{ rev.date | date: 'short' }}</p>
+          <p><strong>Rating:</strong> {{ rev.rating }} / 5</p>
+          <p>{{ rev.review }}</p>
+          <hr />
+        </div>
+      </div>
+      <ng-template #noReviews>
+        <p>No reviews yet. Be the first to review!</p>
+      </ng-template>
+    </div>
+  </div>
+  

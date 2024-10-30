@@ -1,0 +1,65 @@
+<div class="ad-container">
+  <div class="parent">
+    <div class="child">
+      <div nz-row class="imgDiv">
+        <h2>Update Ad</h2>
+      </div>
+      
+      <!-- Form to update ad -->
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="updateAd()">
+        <div nz-row>
+          
+          <!-- Image URL Label and Input -->
+          <div nz-col nzSpan="24" class="form-item">
+            <label for="img">Image URL</label>
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Image URL is required">
+                <input nz-input id="img" placeholder="Enter Image URL" formControlName="img" (input)="imagePreview = validateForm.get('img')?.value"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <!-- Display Image Preview -->
+          <div nz-col nzSpan="24" class="form-item" *ngIf="imagePreview">
+            <img [src]="imagePreview" alt="Image Preview" class="image-preview"/>
+          </div>
+
+          <!-- Service Name Label and Input -->
+          <div nz-col nzSpan="24" class="form-item">
+            <label for="serviceName">Service Name</label>
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Service Name is required!">
+                <input nz-input id="serviceName" placeholder="Enter Service Name" formControlName="serviceName" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <!-- Description Label and Input -->
+          <div nz-col nzSpan="24" class="form-item">
+            <label for="description">Description</label>
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Description is required!">
+                <input nz-input id="description" placeholder="Enter Description" formControlName="description" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <!-- Price Label and Input -->
+          <div nz-col nzSpan="24" class="form-item">
+            <label for="price">Price</label>
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Price is required!">
+                <input nz-input id="price" placeholder="Enter Price" formControlName="price" type="number" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <!-- Submit Button -->
+          <div nz-col nzSpan="24" class="form-item">
+            <button nz-button nzType="primary" [disabled]="!validateForm.valid">Update ad</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

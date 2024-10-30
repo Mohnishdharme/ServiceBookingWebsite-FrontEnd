@@ -1,0 +1,44 @@
+<div class="ad-container">
+  <div class="parent">
+    <div class="child">
+      <div nz-row class="imgDiv">
+        <h2>Create Ad</h2>
+      </div>
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="postAd()">
+        <div nz-row>
+          <div nz-col nzSpan="24" class="form-item">
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Image URL is required">
+                <input nz-input placeholder="Image URL" formControlName="img" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="24" class="form-item">
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Service Name is required!">
+                <input nz-input placeholder="Service Name" formControlName="serviceName" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="24" class="form-item">
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Description is required!">
+                <input nz-input placeholder="Description" formControlName="description" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="24" class="form-item">
+            <nz-form-item>
+              <nz-form-control nzHasFeedback nzErrorTip="Price is required!">
+                <input nz-input placeholder="Price" formControlName="price" type="number" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="24" class="form-item">
+            <button nz-button nzType="primary" [disabled]="!validateForm.valid">Submit Ad</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

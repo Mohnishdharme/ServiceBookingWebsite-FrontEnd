@@ -1,0 +1,73 @@
+.bg {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-top: 50px;
+
+  .parent {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .child {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+  }
+
+  nz-form-item {
+    margin-bottom: 20px;
+
+    nz-form-control {
+      width: 100%;
+    }
+
+    input[nz-input] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #d9d9d9;
+      font-size: 16px;
+    }
+  }
+
+  .login-form-button {
+    background-color: #000;
+    color: #ffffff;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    width: 100%;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+
+  .alternate-option {
+    margin-top: 10px;
+    font-size: 14px;
+
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class="bg">
+    <div class="parent">
+      <div class="child">
+        <div nz-col>
+          <h1 class="title">Client Signup</h1>
+        </div>
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
+              <input nz-input formControlName="email" placeholder="E-mail" />
+            </nz-form-control>
+          </nz-form-item>
+  
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
+              <input nz-input type="password" formControlName="password" placeholder="Password" />
+            </nz-form-control>
+          </nz-form-item>
+  
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
+              <input nz-input type="password" formControlName="checkedPassword" placeholder="Confirm Password" />
+            </nz-form-control>
+          </nz-form-item>
+  
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
+              <input nz-input formControlName="name" placeholder="Name" />
+            </nz-form-control>
+          </nz-form-item>
+  
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
+              <input nz-input formControlName="lastname" placeholder="Last Name" />
+            </nz-form-control>
+          </nz-form-item>
+  
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
+              <input nz-input formControlName="phone" placeholder="Phone" />
+            </nz-form-control>
+          </nz-form-item>
+  
+          <button nz-button class="login-form-button" nzType="primary">Register</button>
+          <div class="alternate-option">
+            Or <a routerLink="/authenticate">login now</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

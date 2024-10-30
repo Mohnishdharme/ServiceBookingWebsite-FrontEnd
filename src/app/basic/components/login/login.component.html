@@ -1,0 +1,30 @@
+<div class="login-container">
+    <div class="login-card">
+      <h2 class="card-title">Login</h2>
+      <p class="card-subtitle">Enter your credentials to access your dashboard</p>
+      <form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" required>
+          <div *ngIf="validateForm.get('email')?.invalid && (validateForm.get('email')?.dirty || validateForm.get('email')?.touched)" class="error-message">
+            <div *ngIf="validateForm.get('email')?.errors?.['required']">Email is required</div>
+            <div *ngIf="validateForm.get('email')?.errors?.['email']">Please enter a valid email address</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" required>
+          <div *ngIf="validateForm.get('password')?.invalid && (validateForm.get('password')?.dirty || validateForm.get('password')?.touched)" class="error-message">
+            <div *ngIf="validateForm.get('password')?.errors?.['required']">Password is required</div>
+            <div *ngIf="validateForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</div>
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="validateForm.invalid">Login</button>
+  
+        <div *ngIf="error" class="error-message">{{ error }}</div>
+      </form>
+      <p class="hint-text">.</p>
+    </div>
+  </div>
