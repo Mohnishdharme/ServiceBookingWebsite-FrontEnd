@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { UserStorageService } from './user-storage.service';
@@ -10,6 +10,15 @@ const BASIC_URL="http://localhost:8080/";
   providedIn: 'root'
 })
 export class AuthService {
+
+  sendVerificationEmail(email: string): Observable<string> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(
+      `${BASIC_URL}api/verify-email`,
+      { email },
+      { headers: headers, responseType: 'text' }
+    );
+  }
 
   private apiUrl = 'http://localhost:8080/authenticate'; // Backend API URL
 

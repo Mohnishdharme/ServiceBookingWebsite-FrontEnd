@@ -1,52 +1,70 @@
 <div class="bg">
-    <div class="parent">
-      <div class="child">
-        <div nz-col>
-          <h1 class="title">Company Signup</h1>
-        </div>
-        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-          <nz-form-item>
-            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
-              <input nz-input formControlName="email" placeholder="E-mail" />
-            </nz-form-control>
-          </nz-form-item>
-  
-          <nz-form-item>
-            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
-              <input nz-input type="password" formControlName="password" placeholder="Password" />
-            </nz-form-control>
-          </nz-form-item>
-  
-          <nz-form-item>
-            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
-              <input nz-input type="password" formControlName="checkedPassword" placeholder="Confirm Password" />
-            </nz-form-control>
-          </nz-form-item>
-  
-          <nz-form-item>
-            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
-              <input nz-input formControlName="name" placeholder="Name" />
-            </nz-form-control>
-          </nz-form-item>
-  
-          <nz-form-item>
-            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
-              <input nz-input formControlName="address" placeholder="Address" />
-            </nz-form-control>
-          </nz-form-item>
-  
-          <nz-form-item>
-            <nz-form-control nzHasFeedback nzErrorTip="The input is not valid">
-              <input nz-input formControlName="phone" placeholder="Phone" />
-            </nz-form-control>
-          </nz-form-item>
-  
-          <button nz-button class="login-form-button" nzType="primary">Register</button>
-          <div class="alternate-option">
-            Or <a routerLink="/authenticate">login now</a>
-          </div>
-        </form>
+  <div class="parent">
+    <div class="child">
+      <div nz-col>
+        <h1 class="title">Client Signup</h1>
       </div>
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control nzHasFeedback [nzErrorTip]="emailErrorTpl">
+            <input nz-input formControlName="email" placeholder="E-mail" />
+            <ng-template #emailErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('required')">Please input your email!</ng-container>
+              <ng-container *ngIf="control.hasError('email')">The input is not valid E-mail!</ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <button nz-button nzType="default" (click)="sendVerificationEmail()" [disabled]="isEmailSent && resendTimer > 0">
+            {{ isEmailSent ? (resendTimer > 0 ? 'Resend in ' + resendTimer + 's' : 'Resend Email') : 'Send Verification Email' }}
+          </button>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="Please input your password!">
+            <input nz-input type="password" formControlName="password" placeholder="Password" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzHasFeedback [nzErrorTip]="passwordErrorTpl">
+            <input nz-input type="password" formControlName="checkedPassword" placeholder="Confirm Password" />
+            <ng-template #passwordErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Please confirm your password!
+              </ng-container>
+              <ng-container *ngIf="validateForm.hasError('passwordMismatch')">
+                Two passwords that you enter is inconsistent!
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="Please input your name!">
+            <input nz-input formControlName="name" placeholder="Name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="Please input your company address!">
+            <input nz-input formControlName="address" placeholder="address" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="Please input your phone number!">
+            <input nz-input formControlName="phone" placeholder="Phone" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button class="login-form-button" nzType="primary" [disabled]="!validateForm.valid || !isEmailSent">
+          Register
+        </button>
+        <div class="alternate-option">
+          Or <a routerLink="/authenticate">login now</a>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>
