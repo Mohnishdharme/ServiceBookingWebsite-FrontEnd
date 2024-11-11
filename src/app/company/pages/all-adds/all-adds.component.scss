@@ -1,151 +1,143 @@
 // Form Styling
 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 300px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 768px) {
+    width: 50%;
+    flex-direction: row;
+  }
+
+  input[nz-input] {
+    width: 100%;
+    padding: 6px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 8px;
+
+    &:focus {
+      border-color: #00796b;
+      box-shadow: 0 0 4px rgba(0, 121, 107, 0.2);
+    }
+
+    @media (min-width: 768px) {
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 1rem;
+    background: #00796b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background: #004d40;
+    }
+  }
+}
+
+// Ad Container Styling
+.ad-container {
+  display: grid;
+  gap: 15px;
+  padding: 15px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ad-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    max-width: 300px;
-    margin: 0 auto 20px auto;
-    padding: 15px;
-    background-color: #f1f1f1; // Light background for contrast
+    padding: 12px;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  
-    @media (min-width: 768px) {
-      width: 50%;
-      flex-direction: row; // Align inputs and button in a row on larger screens
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-3px);
     }
-  
-    input[nz-input] {
+
+    .ad-image {
       width: 100%;
-      padding: 8px;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ddd;
-      margin-bottom: 10px; // Margin at the bottom for spacing
-  
-      &:focus {
-        border-color: #00796b; // Change border color on focus
-        outline: none;
-        box-shadow: 0 0 5px rgba(0, 121, 107, 0.2); // Shadow effect
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .ad-details {
+      text-align: center;
+
+      h3 {
+        font-size: 1.2rem;
+        color: #333;
+        margin: 8px 0;
       }
-  
-      @media (min-width: 768px) {
-        margin-right: 10px; // Space between input and button
-        margin-bottom: 0; // No bottom margin when in row
+
+      p {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 4px 0;
+
+        strong {
+          color: #333;
+        }
       }
     }
-  
+
     button {
-      padding: 8px 12px; // Padding for button
+      margin-top: 8px;
+      padding: 6px 10px;
       font-size: 1rem;
-      background-color: #00796b; // Button color
+      background: #00796b;
       color: white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.3s ease; // Smooth transition
-  
-      &:disabled {
-        background-color: #ccc; // Color for disabled state
-        cursor: not-allowed; // Not allowed cursor
-      }
-  
-      &:not(:disabled):hover {
-        background-color: #004d40; // Darker shade on hover
-      }
-    }
-  }
-  
-  // Ad Container Styling
-  .ad-container {
-    display: grid;
-    grid-template-columns: 1fr; // Single column for small screens
-    gap: 20px; // Space between cards
-    padding: 20px; // Padding around the container
-  
-    @media (min-width: 600px) {
-      grid-template-columns: repeat(2, 1fr); // Two columns for medium screens
-    }
-  
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(3, 1fr); // Three columns for large screens
-    }
-  
-    .ad-card {
-      display: flex;
-      flex-direction: column; // Vertical layout
-      align-items: center; // Center align items
-      padding: 15px; // Inner padding
-      background-color: #fff; // Card background
-      border-radius: 8px; // Rounded corners
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Soft shadow for depth
-      transition: transform 0.3s ease; // Transition for hover effect
-  
+      transition: background 0.3s;
+
       &:hover {
-        transform: translateY(-5px); // Lift effect on hover
+        background: #004d40;
       }
-  
-      .ad-image {
-        width: 100%; // Responsive image width
-        height: 150px; // Fixed height
-        object-fit: cover; // Cover the area without distortion
-        border-radius: 8px; // Rounded corners for images
-        margin-bottom: 10px; // Margin below image
-      }
-  
-      .ad-details {
-        text-align: center; // Center text alignment
-        h3 {
-          font-size: 1.2rem; // Heading size
-          color: #333; // Dark color for contrast
-          margin: 10px 0; // Margin for spacing
-        }
-  
-        p {
-          font-size: 0.9rem; // Smaller paragraph size
-          color: #666; // Grey color for less emphasis
-          margin: 4px 0; // Space between paragraphs
-  
-          strong {
-            color: #333; // Strong text color for emphasis
-          }
-        }
-      }
-  
+    }
+
+    .button-container {
+      display: flex;
+      gap: 8px;
+
       button {
-        margin-top: 10px; // Space above buttons
-        padding: 8px 12px; // Padding for buttons
-        font-size: 1rem;
-        background-color: #00796b; // Button color
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease; // Smooth transition
-  
-        &:hover {
-          background-color: #004d40; // Darker shade on hover
-        }
-      }
-  
-      // Add spacing between update and delete buttons
-      .button-container {
-        display: flex; // Use flex to arrange buttons side by side
-        gap: 10px; // Space between buttons
-  
-        button {
-          flex: 1; // Allow buttons to grow equally
-        }
+        flex: 1;
       }
     }
   }
-  
-  // No Ads Template Styling
-  .no-ads-template {
-    text-align: center; // Center text alignment
-    font-size: 1rem; // Font size for message
-    color: #666; // Grey color for message
-    margin-top: 20px; // Margin above message
-  }
-  
+}
+
+// No Ads Template Styling
+.no-ads-template {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 15px;
+}
