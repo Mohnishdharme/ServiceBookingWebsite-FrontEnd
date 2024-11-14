@@ -1,7 +1,18 @@
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  position: relative;
+  overflow-x: hidden;
+}
+
 .main-header {
   background-color: #f8f9fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem;
+  color: #333;
 
   .header-content {
     display: flex;
@@ -14,7 +25,6 @@
   .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
     margin: 0;
   }
 
@@ -27,8 +37,11 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
 
       &:hover, &.active {
+        background-color: transparent;
         color: #007bff;
       }
     }
@@ -52,34 +65,72 @@
       transition: all 0.3s linear;
     }
   }
+}
 
-  @media (max-width: 768px) {
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #f8f9fa;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+
+  &.open {
+    right: 0;
+  }
+
+  .close-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2rem 2rem;
+
+    a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 1rem 0;
+      border-bottom: 1px solid #dee2e6;
+      transition: background-color 0.3s ease;
+
+      &:hover, &.active {
+        background-color: #e9ecef;
+        color: #007bff;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
     .mobile-menu-toggle {
       display: flex;
     }
 
-    .nav-links {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      background-color: #f8f9fa;
-      padding: 1rem;
+    .desktop-nav {
       display: none;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-      &.show {
-        display: flex;
-      }
-
-      a {
-        padding: 0.5rem 0;
-      }
     }
   }
 
-  &.mobile-menu-open {
+  .main-header.mobile-menu-open {
     .mobile-menu-toggle {
       span {
         &:first-child {
@@ -93,5 +144,11 @@
         }
       }
     }
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    display: none;
   }
 }

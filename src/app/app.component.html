@@ -1,31 +1,58 @@
-<header class="main-header" [ngClass]="{'mobile-menu-open': isMobileMenuOpen}">
-  <div class="header-content">
-    <h2 class="logo" >Service Booking System</h2>
-    <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+<div class="app-container">
+  <header class="main-header" [class.mobile-menu-open]="isMobileMenuOpen">
+    <div class="header-content">
+      <h2 class="logo">Service Booking System</h2>
+      <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links desktop-nav">
+        <ng-container *ngIf="!isClientLoggedIn && !isCompanyLoggedIn">
+          <a routerLink="/home" routerLinkActive="active">Home</a>
+          <a routerLink="/register" routerLinkActive="active">Register</a>
+          <a routerLink="/authenticate" routerLinkActive="active">Login</a>
+        </ng-container>
+        <ng-container *ngIf="isClientLoggedIn">
+          <a routerLink="/client/dashboard" routerLinkActive="active">Dashboard</a>
+          <a routerLink="/client/myBookings" routerLinkActive="active">Bookings</a>
+          <a (click)="logout()" routerLinkActive="active">Logout</a>
+        </ng-container>
+        <ng-container *ngIf="isCompanyLoggedIn">
+          <a routerLink="/company/ad" routerLinkActive="active">Post Ad</a>
+          <a routerLink="/company/ads" routerLinkActive="active">Ads</a>
+          <a routerLink="/company/dashboard" routerLinkActive="active">Dashboard</a>
+          <a (click)="logout()" routerLinkActive="active">Logout</a>
+        </ng-container>
+      </nav>
+    </div>
+  </header>
+
+  <div class="sidebar" [class.open]="isMobileMenuOpen">
+    <button class="close-menu" (click)="toggleMobileMenu()" aria-label="Close mobile menu">
+      <span aria-hidden="true">&times;</span>
     </button>
-    <nav class="nav-links" [ngClass]="{'show': isMobileMenuOpen}">
+    <nav class="nav-links mobile-nav">
       <ng-container *ngIf="!isClientLoggedIn && !isCompanyLoggedIn">
-        <a nz-button nzType="link" routerLink="/home" routerLinkActive="active">Home</a>
-        <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Register</a>
-        <a nz-button nzType="link" routerLink="/authenticate" routerLinkActive="active">Login</a>
+        <a routerLink="/home" routerLinkActive="active" (click)="toggleMobileMenu()">Home</a>
+        <a routerLink="/register" routerLinkActive="active" (click)="toggleMobileMenu()">Register</a>
+        <a routerLink="/authenticate" routerLinkActive="active" (click)="toggleMobileMenu()">Login</a>
       </ng-container>
       <ng-container *ngIf="isClientLoggedIn">
-        <a nz-button nzType="link" routerLink="client/dashboard" routerLinkActive="active">Dashboard</a>
-        <a nz-button nzType="link" routerLink="client/myBookings" routerLinkActive="active">Bookings</a>
-        <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+        <a routerLink="/client/dashboard" routerLinkActive="active" (click)="toggleMobileMenu()">Dashboard</a>
+        <a routerLink="/client/myBookings" routerLinkActive="active" (click)="toggleMobileMenu()">Bookings</a>
+        <a (click)="logout()" routerLinkActive="active">Logout</a>
       </ng-container>
       <ng-container *ngIf="isCompanyLoggedIn">
-        <a nz-button nzType="link" routerLink="company/ad" routerLinkActive="active">Post Ad</a>
-        <a nz-button nzType="link" routerLink="company/ads" routerLinkActive="active">Ads</a>
-        <a nz-button nzType="link" routerLink="company/dashboard" routerLinkActive="active">Dashboard</a>
-
-        <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+        <a routerLink="/company/ad" routerLinkActive="active" (click)="toggleMobileMenu()">Post Ad</a>
+        <a routerLink="/company/ads" routerLinkActive="active" (click)="toggleMobileMenu()">Ads</a>
+        <a routerLink="/company/dashboard" routerLinkActive="active" (click)="toggleMobileMenu()">Dashboard</a>
+        <a (click)="logout()" routerLinkActive="active">Logout</a>
       </ng-container>
     </nav>
   </div>
-</header>
 
-<router-outlet></router-outlet>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
