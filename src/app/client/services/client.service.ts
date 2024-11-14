@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { UserStorageService } from 'src/app/basic/components/service/auth/user-storage.service';
 
 
-const BASIC_URL = "https://servicebookingwebsite-1.onrender.com/";
+const BASIC_URL = "https://servicebookingwebsite-1.onrender.com";
 
 @Injectable({
   providedIn: 'root'

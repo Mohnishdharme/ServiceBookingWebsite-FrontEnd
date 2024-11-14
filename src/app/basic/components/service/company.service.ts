@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { UserStorageService } from './auth/user-storage.service'; // Ensure correct path
 
 
-const BASIC_URL = "https://servicebookingwebsite-1.onrender.com/"; // Ensure this is your correct backend URL
+const BASIC_URL = "https://servicebookingwebsite-1.onrender.com"; // Ensure this is your correct backend URL
 
 @Injectable({
   providedIn: 'root'

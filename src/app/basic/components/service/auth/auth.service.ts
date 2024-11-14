@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { UserStorageService } from './user-storage.service';
 
-const BASIC_URL="https://servicebookingwebsite-1.onrender.com/";
+const BASIC_URL="https://servicebookingwebsite-1.onrender.com";
 
 
 @Injectable({
@@ -20,7 +20,7 @@ export class AuthService {
     );
   }
 
-  private apiUrl = 'http://localhost:8080/authenticate'; // Backend API URL
+  private apiUrl = '"https://servicebookingwebsite-1.onrender.com/authenticate'; // Backend API URL
 
   constructor(private  http: HttpClient,
     private userStorageService: UserStorageService
